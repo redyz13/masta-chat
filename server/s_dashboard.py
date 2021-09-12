@@ -1,4 +1,4 @@
-from Server import Server
+from .server import Server
 
 def run():
     while True:
@@ -15,7 +15,4 @@ def connection():
 def dashboard():
     select = int(input("\nSelezionare un opzione\n\n1. Avvia Connessione\n0. Esci\n\nSelezione: "))
 
-    if select == 1:
-        connection()
-    else:
-        exit()
+    connection() if select == 1 else exit()

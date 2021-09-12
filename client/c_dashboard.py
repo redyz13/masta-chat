@@ -1,4 +1,4 @@
-from Client import Client
+from .client import Client
 
 def run():
     pass
@@ -21,7 +21,4 @@ def connect():
 def dashboard():
     select = int(input("\nSelezionare un opzione\n\n1. Connetti\n0. Esci\n\nSelezione: "))
 
-    if select == 1:
-        connect()
-    else:
-        exit()
+    connect() if select == 1 else exit()

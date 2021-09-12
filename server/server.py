@@ -1,5 +1,4 @@
 import socket
-from subprocess import TimeoutExpired
 
 class Server():
     def __init__(self, port):
