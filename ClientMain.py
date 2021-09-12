@@ -12,12 +12,9 @@ def connect():
     try:
         client.connect()
         print("\n[Connessione effettuata]\n")
-    except ConnectionRefusedError:
-        print("\n[Errore di connessione]")
-        dashboard()
     except Exception:
-        print("\n[IP errato]") 
-        dashboard()        
+        print("\n[Errore di connessione]") 
+        dashboard()  
 
     run()
 
