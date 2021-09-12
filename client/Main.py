@@ -1,7 +1,7 @@
 from Client import Client
 
 def run():
-    pass #
+    pass
 
 def connect():
     ip = input("\nInserire l'indirizzo IP del server: ")
