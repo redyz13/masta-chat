@@ -1,5 +1,4 @@
 import socket
-import subprocess
 
 class Server():
     def __init__(self, port):
@@ -22,4 +21,4 @@ class Server():
         self.__clientSocket.send(x.encode())
 
     def receiveData(self):
-        return self.__clientSocket.recv(1024)
+        return self.__clientSocket.recv(1024).decode("utf-8")

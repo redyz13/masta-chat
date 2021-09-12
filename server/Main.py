@@ -1,7 +1,7 @@
 from Server import Server
 
 def run():
-    ()
+    pass
 
 def connection():
     server = Server(7000) # Server port
