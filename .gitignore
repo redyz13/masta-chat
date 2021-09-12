@@ -1,2 +1,2 @@
-client/__pyache__/
-server/__pyache__/
+client/__pycache__/*
+server/__pycache__/*
