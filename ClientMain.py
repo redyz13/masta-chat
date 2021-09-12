@@ -14,17 +14,20 @@ def connect():
         print("\n[Connessione effettuata]\n")
     except ConnectionRefusedError:
         print("\n[Errore di connessione]")
-        connect()
+        dashboard()
     except Exception:
         print("\n[IP errato]") 
-        connect()          
+        dashboard()        
 
     run()
 
-if __name__ == '__main__':
+def dashboard():
     select = int(input("\nSelezionare un opzione\n\n1. Connetti\n0. Esci\n\nSelezione: "))
 
     if select == 1:
         connect()
     else:
         exit()
+
+if __name__ == '__main__':
+    dashboard()
