@@ -6,7 +6,7 @@ def run():
     
 def connection():
     server = Server(7000) # Server port
-    server.acceptClient()
+    server.accept_client()
 
     print("\n[Server in esecuzione]\n")
 
