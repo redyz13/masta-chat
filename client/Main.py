@@ -9,9 +9,15 @@ def connect():
 
     client = Client(ip, port) # Server port
 
-    client.connect()
-
-    print("\n[Connessione effettuata]\n")
+    try:
+        client.connect()
+        print("\n[Connessione effettuata]\n")
+    except ConnectionRefusedError:
+        print("\n[Errore di connessione]")
+        connect()
+    except Exception:
+        print("\n[IP errato]") 
+        connect()          
 
     run()
 

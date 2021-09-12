@@ -1,20 +1,26 @@
 import socket
+from subprocess import TimeoutExpired
 
 class Server():
     def __init__(self, port):
-        self.__server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #AF_INET (LAN, Internet) SOCK_STREAM (TCP)
+        self.__serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #AF_INET (LAN, Internet) SOCK_STREAM (TCP)
         self.__port = port
         self.__clientSocket = None
 
     def acceptClient(self):
-        self.__server.bind((socket.gethostname(), self.__port)) # Bind to hostname and port
-        self.__server.listen(0) # Connection queue before refusing
+        self.__serverSocket.bind((socket.gethostname(), self.__port)) # Bind to hostname and port
+        self.__serverSocket.listen(0) # Connection queue before refusing
         
         print("\n[Connessione Avviata]\tIn attesa di un client...")
 
-        self.__clientSocket = self.__server.accept()
+        self.__serverSocket.settimeout(60)
 
-        print(f"\n[Connessione Effettuata]\tClient: {self.__clientSocket.gethostname()} connesso")
+        try:
+            self.__clientSocket, address = self.__serverSocket.accept()
+            print(f"\n[Connessione Effettuata]\tClient: {address} connesso")
+        except socket.timeout:
+            print("\n[Tempo di attesa scaduto, server arrestato]\n")
+            exit()
 
     def sendData(self, x):
         x = str(x)

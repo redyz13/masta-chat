@@ -7,7 +7,9 @@ class Client():
         self.__clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #AF_INET (LAN, Internet) SOCK_STREAM (TCP)
 
     def connect(self):
+        self.__clientSocket.settimeout(10) # Connection timeout (seconds)
         self.__clientSocket.connect((self.__ip, self.__port))
+
 
     def sendData(self, x):
         x = str(x)
