@@ -19,7 +19,3 @@ def dashboard():
         connection()
     else:
         exit()
-
-if __name__ == '__main__':
-    dashboard()
-    
