@@ -25,7 +25,7 @@ def thread_receive(client, server_username):
             print(f"\n\n[Nessun input ricevuto negli ultimi {TIMEOUT} secondi, connessione terminata]")
             exit()"""
         
-        if message_received != "":
+        if len(message_received) != 0:
             print(f"[{server_username}]: {message_received}")
 
 def run(client):
@@ -36,7 +36,7 @@ def run(client):
     server_username = client.receive_data()
 
     thread1 = Thread(target = lambda: thread_send(client, client_username))
-    thread2= Thread(target = lambda: thread_receive(client, server_username))
+    thread2 = Thread(target = lambda: thread_receive(client, server_username))
 
     thread1.start()
     thread2.start()

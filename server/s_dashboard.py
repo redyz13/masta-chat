@@ -14,9 +14,8 @@ def thread_send(server, server_username):
 def thread_receive(server, client_username):
     while True:
         message_received = server.receive_data()
-        print(message_received)
 
-        if message_received != "":
+        if len(message_received) != 0:
             print(f"[{client_username}]: {message_received}") 
 
 def run(server):
@@ -27,7 +26,7 @@ def run(server):
     server.send_data(server_username)
     
     thread1 = Thread(target = lambda: thread_send(server, server_username))
-    thread2= Thread(target = lambda: thread_receive(server, client_username))
+    thread2 = Thread(target = lambda: thread_receive(server, client_username))
 
     thread1.start()
     thread2.start()
