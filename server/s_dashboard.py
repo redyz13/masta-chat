@@ -2,11 +2,13 @@ from .server import Server
 
 def run(server):
     server_username = input("Inserire il proprio username: ")
-    print("\n")
+    print("")
+    
     client_username = server.receive_data()
+    server.send_data(server_username)
 
     while True:
-        message_received = server.receive_data()#input(f"\n[{client_username}]: ")
+        message_received = server.receive_data()
         print(f"[{client_username}]: {message_received}")
 
         message_sent = input(f"\n[{server_username}]: ")

@@ -2,11 +2,16 @@ from .client import Client
 
 def run(client):
     client_username = input("Inserire il proprio username: ")
+
     client.send_data(client_username)
+    server_username = client.receive_data()
 
     while True:
         message_sent = input(f"\n[{client_username}]: ")
         client.send_data(message_sent)
+
+        message_received = client.receive_data()
+        print(f"[{server_username}]: {message_received}")
 
 def connect():
     ip = input("\nInserire l'indirizzo IP del server: ")
