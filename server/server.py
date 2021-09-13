@@ -27,3 +27,6 @@ class Server():
 
     def receive_data(self):
         return self.__client_socket.recv(1024).decode("utf-8")
+
+    def get_client(self):
+        return self.__client_socket    

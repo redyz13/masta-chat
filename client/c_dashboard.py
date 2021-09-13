@@ -1,7 +1,12 @@
 from .client import Client
 
-def run():
-    pass
+def run(client):
+    client_username = input("Inserire il proprio username: ")
+    client.send_data(client_username)
+
+    while True:
+        message_sent = input(f"\n[{client_username}]: ")
+        client.send_data(message_sent)
 
 def connect():
     ip = input("\nInserire l'indirizzo IP del server: ")
@@ -16,7 +21,7 @@ def connect():
         print("\n[Errore di connessione]") 
         dashboard()  
 
-    run()
+    run(client)
 
 def dashboard():
     select = int(input("\nSelezionare un opzione\n\n1. Connetti\n0. Esci\n\nSelezione: "))
