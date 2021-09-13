@@ -1,4 +1,15 @@
 from .client import Client
+from threading import *
+
+def send_thread(client, client_username):
+    while True:
+        message_sent = input(f"\n[{client_username}]: ")
+        client.send_data(message_sent)
+
+def receive_thread(client, server_username):
+    while True:
+        message_received = client.receive_data()
+        print(f"[{server_username}]: {message_received}")
 
 def run(client):
     client_username = input("Inserire il proprio username: ")
@@ -6,12 +17,11 @@ def run(client):
     client.send_data(client_username)
     server_username = client.receive_data()
 
-    while True:
-        message_sent = input(f"\n[{client_username}]: ")
-        client.send_data(message_sent)
+    thread1 = Thread(target = lambda: send_thread(client, client_username))
+    thread2= Thread(target = lambda: receive_thread(client, server_username))
 
-        message_received = client.receive_data()
-        print(f"[{server_username}]: {message_received}")
+    thread1.start()
+    thread2.start()
 
 def connect():
     ip = input("\nInserire l'indirizzo IP del server: ")

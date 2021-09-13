@@ -7,7 +7,7 @@ class Server():
         self.__client_socket = None
 
     def accept_client(self):
-        self.__server_socket.bind((socket.gethostname(), self.__port)) # Bind to hostname and port
+        self.__server_socket.bind(("", self.__port)) # Bind to hostname and port
         self.__server_socket.listen(0) # Connection queue before refusing
         
         print("\n[Connessione Avviata]\tIn attesa di un client...")
