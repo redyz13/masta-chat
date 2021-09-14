@@ -1,4 +1,4 @@
-from tkinter.constants import Y
+from tkinter.constants import X, Y
 from PIL import Image,ImageTk
 from tkinter.font import BOLD
 from tkinter import Widget, messagebox
@@ -8,6 +8,8 @@ import server.s_dashboard as server
 import client.c_dashboard as client
 
 username_return = None
+ip = None
+port = None
 
 def ip_port_window(username, window):
     if username == "":
@@ -16,12 +18,43 @@ def ip_port_window(username, window):
     elif len(username) > 10:
         messagebox.showerror(title="Error", message = "L'username non può superare i 10 caratteri")
 
-    else:
+    else:    
         root = tk.Tk()
         root.resizable(False, False)
-        root.geometry("200x200")
+        root.geometry("200x225")
+        root.configure(background = "#dbdbdb")
+
+        tk.Label(root,
+        text = "Ip",
+        font = ("Verdana", 15, BOLD)
+        ).place(x = 0, y = 0)
+
+        entry_ip = tk.Entry(root, 
+        width = 12, 
+        font = ("Verdana", 15, BOLD)
+        )
         
-        tk.Label(root,text = "Ip", font = ("Verdana",15,BOLD)).place(x = 0, y = 0)
+        entry_ip.place(x = 1, y = 40)
+
+        tk.Label(root, 
+        text = "Port", 
+        font = ("Verdana", 15, BOLD)
+        ).place(x = 0, y = 80)
+
+        entry_port = tk.Entry(root,
+        width = 12, 
+        font = ("Verdana", 15, BOLD)
+        )
+
+        entry_port.place(x = 1, y = 120)
+
+        tk.Button(root, 
+        text = "Ok", 
+        font = ("Verdana", 15, BOLD),
+        background = "#dbdbdb",
+        activebackground = "#dbdbdb"
+        ).place(x = 75, y = 180)
+
         root.mainloop()
 
 def convert_picture(path,size1,size2):
@@ -55,7 +88,11 @@ def initial_window():
 
     logo_immagine = convert_picture("assets\\masta_chat.gif", 225, 225)
 
-    tk.Label(window,image = logo_immagine, height = 50, width = 220, background = "#dbdbdb").place(x = 130, y = 70)
+    tk.Label(window, image = logo_immagine,
+        height = 50,
+        width = 220,
+        background = "#dbdbdb"
+    ).place(x = 130, y = 70)
 
     tk.Button(window,
         text = "Crea", 
@@ -63,16 +100,30 @@ def initial_window():
         height = 2, 
         font = ("Verdana", 13, BOLD), 
         activeforeground = "#000000",
-        background = "#e6e6e6",
-        activebackground = "#e6e6e6",
+        background = "#dbdbdb",
+        activebackground = "#dbdbdb",
         command = lambda: create_chat (username = entry_username.get(),
                                       window = window
                                       )
         ).place(x = 145, y = 240)
         
-    tk.Button(window, text = "Partecipa", width = 7, height = 2, font = ("Verdana", 13, BOLD), activeforeground = "#000000", background = "#e6e6e6", activebackground = "#e6e6e6", command = lambda: ip_port_window(username = entry_username.get(), window = window)).place(x = 270, y = 240)
+    tk.Button(window,
+        text = "Partecipa",
+        width = 7,
+        height = 2,
+        font = ("Verdana", 13, BOLD),
+        activeforeground = "#000000",
+        background = "#dbdbdb",
+        activebackground = "#dbdbdb",
+        command = lambda: ip_port_window (username = entry_username.get(),
+                                          window = window
+                                         )
+        ).place(x = 270, y = 240)
     
-    entry_username = tk.Entry(window, background = "#ffffff", font = ("Verdana", 15, BOLD))
+    entry_username = tk.Entry(window,
+        background = "#ffffff",
+        font = ("Verdana", 15, BOLD))
+
     entry_username.place(x = 115, y = 180)
     
     window.mainloop()
