@@ -26,7 +26,8 @@ def ip_port_window(username, window):
 
         tk.Label(root,
         text = "Ip",
-        font = ("Verdana", 15, BOLD)
+        font = ("Verdana", 15, BOLD),
+        background = "#dbdbdb"
         ).place(x = 0, y = 0)
 
         entry_ip = tk.Entry(root, 
@@ -38,7 +39,8 @@ def ip_port_window(username, window):
 
         tk.Label(root, 
         text = "Port", 
-        font = ("Verdana", 15, BOLD)
+        font = ("Verdana", 15, BOLD),
+        background = "#dbdbdb"
         ).place(x = 0, y = 80)
 
         entry_port = tk.Entry(root,
