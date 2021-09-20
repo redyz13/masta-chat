@@ -25,7 +25,7 @@ def ip_port_window(username, window):
         root.configure(background = "#dbdbdb")
 
         tk.Label(root,
-        text = "Ip",
+        text = "Indirizzo IP",
         font = ("Verdana", 15, BOLD),
         background = "#dbdbdb"
         ).place(x = 0, y = 0)
@@ -38,7 +38,7 @@ def ip_port_window(username, window):
         entry_ip.place(x = 1, y = 40)
 
         tk.Label(root, 
-        text = "Port", 
+        text = "Porta", 
         font = ("Verdana", 15, BOLD),
         background = "#dbdbdb"
         ).place(x = 0, y = 80)
@@ -51,11 +51,11 @@ def ip_port_window(username, window):
         entry_port.place(x = 1, y = 120)
 
         tk.Button(root, 
-        text = "Ok", 
+        text = "Partecipa", 
         font = ("Verdana", 15, BOLD),
         background = "#dbdbdb",
         activebackground = "#dbdbdb"
-        ).place(x = 75, y = 180)
+        ).place(x = 35, y = 170)
 
         root.mainloop()
 
@@ -69,9 +69,9 @@ def convert_picture(path,size1,size2):
 
     return img3
 
-def create_chat(username,window):
+def create_chat(username, window):
     global username_return
-
+    
     if username == "":
         messagebox.showerror(title = "Errore", message = "Username non inserito")
 
@@ -129,5 +129,5 @@ def initial_window():
     entry_username.place(x = 115, y = 180)
     
     window.mainloop()
-
+    
     return str(username_return)
