@@ -1,2 +1,2 @@
-# masta_chat
+# masta-chat
 La chat dei mastafive
